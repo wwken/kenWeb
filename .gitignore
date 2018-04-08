@@ -22,3 +22,6 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea/
+
+/packages/.DS_Store
+/packages/*/node_modules
