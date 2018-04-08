@@ -15,6 +15,7 @@ var getTimeStr = require('./../util/tools').getTimeStr;
 var createParams = require('./../util/dbUtils').createParams;
 var isVariableNotDefined = require('./../util/objUtils').isVariableNotDefined;
 var isVariableDefined = require('./../util/objUtils').isVariableDefined;
+var isVariableEmpty = require('./../util/objUtils').isVariableEmpty;
 var isArrayEmpty = require('./../util/objUtils').isArrayEmpty;
 var readFile = require('./../util/fileUtils').readFile;
 var removeSingleQuotes = require('./../util/tools').removeSingleQuotes;
@@ -163,10 +164,13 @@ app.post('/users/authenticate', function(req, res, next) {
   getDBPool(req).getConnection(function(err, conn) {
     conn.query(query, values, function(err, rows) {
       conn.release();
-      if (!isArrayEmpty(err)) {
-        res.send(rows);
+      if (isVariableEmpty(err)) {
+        if (!isArrayEmpty(rows)) {
+          res.send(rows);
+        }
         res.end('ok');
       } else {
+        next(err);
       }
     });
   });
