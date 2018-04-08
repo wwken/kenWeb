@@ -1,3 +1,9 @@
+var _ = require('lodash');
+
+var isVariableNotDefined = function(v) {
+  return v === undefined || v === null;
+};
+
 module.exports = {
   createParams: function(keys, values) {
     var v = {};
@@ -9,19 +15,13 @@ module.exports = {
     return v;
   },
 
-  isVariableNotDefined: function(v) {
-    return v === undefined || v === null;
-  },
-
   isVariableDefined: function(v) {
     return !isVariableNotDefined(v);
   },
 
   isVariableEmpty: function(v) {
-    return v === '';
+    return _.isEmpty(v);
   },
 
-  getAllValuesFromObject: function(o) {
-    return _getAllValuesFromObject(o);
-  },
+  isVariableNotDefined,
 };

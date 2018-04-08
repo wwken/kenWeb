@@ -1,0 +1,4 @@
+-- To import a store procedure locally
+
+export MYSQL_PATH=/usr/local/mysql
+"${MYSQL_PATH}/bin/"mysql -u root -p -h localhost dev < ./findFriends.sql

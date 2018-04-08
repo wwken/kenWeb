@@ -1,5 +1,6 @@
 require('./global');
 var isVariableNotDefined = require('./objUtils').isVariableNotDefined;
+var isVariableEmpty = require('./objUtils').isVariableEmpty;
 
 /**
  * Created by Ken Wu on 1/14/17.
@@ -32,8 +33,8 @@ var validateParameters = function(
   onBody
 ) {
   var o = parms.query;
-  if (onBody !== undefined && onBody) {
-    o = JSON.parse(parms.body);
+  if (onBody !== undefined) {
+    o = onBody(parms);
   }
 
   for (var i = 0; i < keysToBeValidated.length; i++) {

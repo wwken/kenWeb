@@ -1,0 +1,53 @@
+-- important!! Pre-requisite for all the steps below
+step 1) export MYSQL_PATH=/usr/local/mysql
+step 2) cd /Users/kenwu/workplace/kenWeb/app/DATABASE
+
+-- System requirments/configurations:
+sudo apt-get install python-pip
+sudo pip install numpy
+sudo pip install pandas
+
+-- To run loadAllFilesIntoDB.py:
+
+export KENWEB_IMPORT_DIR=/Users/kenwu/Dropbox/WeMeetNow/WeMeetNow-node.js-web/MySql-DB-Scripts/resources/profile_avator/
+
+./loadAllFilesIntoDB.py
+
+
+-- To import/execute an sql file locally
+"${MYSQL_PATH}/bin/"mysql -u root -p -h localhost dev < ./findFriends.sql
+
+
+-- Tips - for internal dev debugging only
+import sys
+sys.path.append("/Applications/PyCharm.app/Contents/debug-eggs/pycharm-debug.egg")
+import pydevd
+pydevd.settrace('localhost', port=12345, stdoutToServer=True, stderrToServer=True)
+
+-- To start the Mysql command line:
+1a)
+"${MYSQL_PATH}/bin/"mysql -u root -p -h localhost dev-test      # default to dev-test database
+
+1b)
+"${MYSQL_PATH}/bin/"mysql -u root -p -h localhost dev      # default to dev database
+
+-- To reset/truncate the database
+1) cd ./WeMeetNow-HTTPRestful-Automator
+2a) ./bash_scripts/truncateAllTablesInDevTest.sh    # for dev-test database
+
+2a) ./bash_scripts/truncateAllTablesInDev.sh        # for dev database
+
+-- Export all schema from dev dabase
+"${MYSQL_PATH}/bin/"mysqldump -u root -p --no-data --routines dev > ./MySql_db_scripts/database-schema.sql
+
+-- Export all schema from dev-test dabase
+"${MYSQL_PATH}/bin/"mysqldump -u root -p --no-data --routines dev-test > ./MySql_db_scripts/database-schema.sql
+
+-- Import all schema into dev database
+"${MYSQL_PATH}/bin/"mysql -u root -p -h localhost dev < ./MySql_db_scripts/database-schema.sql
+
+-- Import all schema into dev-test database
+"${MYSQL_PATH}/bin/"mysql -u root -p -h localhost dev-test < ./MySql_db_scripts/database-schema.sql
+
+-- Load all fixture data into the dev-test database (make sure the webserver is running first)
+./initialAllFixtureIntoDevTest.py

@@ -21,7 +21,7 @@ function login(username, password) {
       Accept: 'application/json, text/plain, */*',
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
     },
-    body: JSON.stringify({ username, password }),
+    body: 'json=' + JSON.stringify({ username, password }),
   };
   return fetch(address + '/users/authenticate', requestOptions)
     .then(response => {

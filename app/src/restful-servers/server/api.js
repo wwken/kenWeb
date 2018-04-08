@@ -13,8 +13,8 @@ var g = require('./../util/tools').g;
 var e = require('./../util/tools').e;
 var getTimeStr = require('./../util/tools').getTimeStr;
 var createParams = require('./../util/dbUtils').createParams;
-var isVariableNotDefined = require('./../util/tools').isVariableNotDefined;
-var isVariableDefined = require('./../util/tools').isVariableDefined;
+var isVariableNotDefined = require('./../util/objUtils').isVariableNotDefined;
+var isVariableDefined = require('./../util/objUtils').isVariableDefined;
 var readFile = require('./../util/fileUtils').readFile;
 var removeSingleQuotes = require('./../util/tools').removeSingleQuotes;
 var validateParameters = require('./../util/tools').validateParameters;
@@ -90,6 +90,13 @@ var info = function(s) {
   console.info(getTimeStr() + ' ' + s);
 };
 
+var onBodyJasonParse = function(x) {
+  return JSON.parse(x.body['json']);
+};
+var onBody = function(x) {
+  return x.body;
+};
+
 var getDBPool = function(req) {
   if (req.method.toUpperCase() === 'GET') {
     // GET method
@@ -124,9 +131,12 @@ app.get('/public-static/*', function(req, res) {
 });
 
 app.post('/users/authenticate', function(req, res, next) {
-  var onBody = true;
-  var p = validateParameters(res, req, ['username', 'password'], onBody);
-  debugger;
+  var p = validateParameters(
+    res,
+    req,
+    ['username', 'password'],
+    onBodyJasonParse
+  );
   res.json({ a: 1 });
 });
 
@@ -134,7 +144,6 @@ app.post('/users/authenticate', function(req, res, next) {
     This one will do update automatically if unique key exists
  */
 app.post('/insertUser', function(req, res, next) {
-  var onBody = true;
   var p = validateParameters(res, req, ['email'], onBody);
   var query =
     'INSERT INTO User SET facebook_id = ?, google_id = ?, password = ?, email = ?, first_name = ?, last_name = ?, sex = ? , birthday = ?, online_status = ?' +
