@@ -15,6 +15,7 @@ var getTimeStr = require('./../util/tools').getTimeStr;
 var createParams = require('./../util/dbUtils').createParams;
 var isVariableNotDefined = require('./../util/objUtils').isVariableNotDefined;
 var isVariableDefined = require('./../util/objUtils').isVariableDefined;
+var isArrayEmpty = require('./../util/objUtils').isArrayEmpty;
 var readFile = require('./../util/fileUtils').readFile;
 var removeSingleQuotes = require('./../util/tools').removeSingleQuotes;
 var validateParameters = require('./../util/tools').validateParameters;
@@ -27,7 +28,7 @@ var output = function(res, err, rows, indexRowToBeReturn) {
   if (isVariableNotDefined(err) || err == 'null') {
     if (indexRowToBeReturn != undefined)
       res.json(rows[indexRowToBeReturn]); // rows[indexRowToBeReturn] is the actual data
-    else res.json(rows);
+    else res.json({ user: 'dewww' });
   } else {
     res.json(err);
   }
@@ -78,13 +79,29 @@ app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(bodyParser.raw());
+app.use(function(req, res, next) {
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
-// parse multipart/form-data
-// app.use(upload);
+  // Request methods you wish to allow
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+  );
 
-// app.use(express.json());
-// app.use(express.urlencoded());
+  // Request headers you wish to allow
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-Requested-With,content-type'
+  );
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+  // Pass to next layer of middleware
+  next();
+});
 
 var info = function(s) {
   console.info(getTimeStr() + ' ' + s);
@@ -98,23 +115,25 @@ var onBody = function(x) {
 };
 
 var getDBPool = function(req) {
+  var p = null;
   if (req.method.toUpperCase() === 'GET') {
     // GET method
     if (isVariableDefined(req.query.isTest)) {
-      return db.poolTest;
+      p = db.poolTest;
     } else {
-      return db.pool;
+      p = db.pool;
     }
   } else if (req.method.toUpperCase() === 'POST') {
     if (isVariableDefined(req.body.isTest)) {
-      return db.poolTest;
+      p = db.poolTest;
     } else {
-      return db.pool;
+      p = db.pool;
     }
   } else {
     console.log('ERROR - unsupported method: ' + req.method.toUpperCase());
-    return null;
   }
+  console.log('In getDBPool, p is ', p);
+  return p;
 };
 
 app.get('/public-static/*', function(req, res) {
@@ -137,7 +156,20 @@ app.post('/users/authenticate', function(req, res, next) {
     ['username', 'password'],
     onBodyJasonParse
   );
-  res.json({ a: 1 });
+  var query =
+    'select first_name, last_name from User where email = ? and password = ?';
+  var values = [p.username, p.password];
+  info('In /users/authenticate, query: ' + query + ', values: ' + values);
+  getDBPool(req).getConnection(function(err, conn) {
+    conn.query(query, values, function(err, rows) {
+      conn.release();
+      if (!isArrayEmpty(err)) {
+        res.send(rows);
+        res.end('ok');
+      } else {
+      }
+    });
+  });
 });
 
 /*

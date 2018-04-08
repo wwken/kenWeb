@@ -12,12 +12,5 @@ fi
 echo "Going to truncate all tables in database: ${MYSQL_DB_TO_BE_USED}"
 
 "${MYSQL_PATH}/bin/"mysql -u root --password='' -h localhost -e '\
-    truncate table User; \
-    truncate table Resource;    \
-    truncate table Relation;        \
-    truncate table Notification;    \
-    truncate table UserRelation;        \
-    truncate table UserLocation;    \
-    truncate table UserResource;    \
-    truncate table UserNotification;
+    truncate table User;
 ' ${MYSQL_DB_TO_BE_USED}

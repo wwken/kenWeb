@@ -16,7 +16,6 @@ const address = 'http://' + config.server.host + ':' + config.server.port;
 function login(username, password) {
   const requestOptions = {
     method: 'POST',
-    mode: 'no-cors',
     headers: {
       Accept: 'application/json, text/plain, */*',
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
@@ -25,10 +24,11 @@ function login(username, password) {
   };
   return fetch(address + '/users/authenticate', requestOptions)
     .then(response => {
-      if (!response.ok) {
-        return Promise.reject(response.statusText);
-      }
+      // if (!response.ok) {
+      //   return Promise.reject(response.statusText);
+      // }
 
+      // return response.send({'user': {'token': 'dddd'}});
       return response.json();
     })
     .then(user => {

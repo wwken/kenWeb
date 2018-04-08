@@ -23,5 +23,9 @@ module.exports = {
     return _.isEmpty(v);
   },
 
+  isArrayEmpty: function(a) {
+    return !isVariableNotDefined(a) || _.isEmpty(v) || !a.length;
+  },
+
   isVariableNotDefined,
 };
