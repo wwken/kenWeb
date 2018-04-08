@@ -1,30 +1,9 @@
 require('./global');
+var isVariableNotDefined = require('./objUtils').isVariableNotDefined;
 
 /**
  * Created by Ken Wu on 1/14/17.
  */
-
-var _getAllValuesFromObject = function(o) {
-  return Object.getOwnPropertyNames(o).map(function(key) {
-    return o[key];
-  });
-};
-
-var isVariableNotDefined = function(v) {
-  return v === undefined || v === null;
-};
-
-var isVariableDefined = function(v) {
-  return !isVariableNotDefined(v);
-};
-
-var isVariableEmpty = function(v) {
-  return v === '';
-};
-
-var getAllValuesFromObject = function(o) {
-  return _getAllValuesFromObject(o);
-};
 
 // takes in an integer (97746037) and formats it with commas (97,746,037)
 var g = function(v, defaultValue) {
@@ -54,7 +33,7 @@ var validateParameters = function(
 ) {
   var o = parms.query;
   if (onBody !== undefined && onBody) {
-    o = parms.body;
+    o = JSON.parse(parms.body);
   }
 
   for (var i = 0; i < keysToBeValidated.length; i++) {
@@ -73,7 +52,7 @@ var validateParameters = function(
 var buildInsertSQLQuery = function(tableName, parms, optionalStatement) {
   var q = 'INSERT INTO {0}'.format(tableName);
   var keys = Object.keys(parms);
-  var values = _getAllValuesFromObject(parms);
+  var values = Object.value(parms);
   q = q + ' (' + keys.join(',') + ') VALUES (' + values.join(',') + ') ';
   if (optionalStatement) {
     q = q + optionalStatement;
@@ -90,9 +69,6 @@ var getTimeStr = function() {
 };
 
 module.exports = {
-  isVariableNotDefined: isVariableNotDefined,
-  isVariableDefined: isVariableDefined,
-  getAllValuesFromObject: getAllValuesFromObject,
   g: g,
   e: e,
   validateParameters: validateParameters,

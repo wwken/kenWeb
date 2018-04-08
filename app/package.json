@@ -21,15 +21,18 @@
     "request": "^2.85.0"
   },
   "scripts": {
+    "start:debug": "concurrently \"npm run server:debug\" \"npm run client\"",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "client": "react-scripts start",
     "server": "node src/restful-servers/server.js",
+    "server:debug": "devtool src/restful-servers/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:reset": "rm -rf node_modules; yarnpkg install"
   },
   "devDependencies": {
-    "concurrently": "^3.5.1"
+    "concurrently": "^3.5.1",
+    "devtool": "^2.3.1"
   }
 }
