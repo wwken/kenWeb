@@ -57,8 +57,19 @@ function login(username, password) {
 }
 
 function logout() {
-  // remove user from local storage to log user out
-  localStorage.removeItem('user');
+  const requestOptions = {
+    method: 'GET',
+  };
+  return fetch(address + '/users/logout', requestOptions)
+    .then(function(response) {
+      if (!response.ok) {
+        return Promise.reject(response.statusText);
+      }
+    })
+    .then(() => {
+      // remove user from local storage to log user out
+      localStorage.removeItem('user');
+    });
 }
 
 /*

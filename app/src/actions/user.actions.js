@@ -39,11 +39,6 @@ function login(username, password) {
   }
 }
 
-function logout() {
-  userService.logout();
-  return { type: userConstants.LOGOUT };
-}
-
 function register(user) {
   return dispatch => {
     dispatch(request(user));
@@ -70,6 +65,18 @@ function register(user) {
   function failure(error) {
     return { type: userConstants.REGISTER_FAILURE, error };
   }
+}
+
+function logout() {
+  return dispatch => {
+    userService.logout().then(user => {
+      // console.log('dewni');
+      dispatch(() => {
+        return { type: userConstants.LOGOUT };
+      });
+      window.location.href = '/';
+    });
+  };
 }
 
 function getAll() {

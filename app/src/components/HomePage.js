@@ -1,12 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { isNil } from 'lodash';
+import { isNil, bindAll } from 'lodash';
 import { userActions } from '../actions';
 
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+    bindAll(this, ['logout']);
+  }
+
   componentDidMount() {
-    this.props.dispatch(userActions.getAll());
+    this.props.getAll();
   }
 
   handleDeleteUser(id) {
@@ -22,6 +27,10 @@ class HomePage extends React.Component {
     return n;
   }
 
+  logout() {
+    this.props.logout();
+  }
+
   render() {
     const userName = this.getUserName();
     return (
@@ -30,7 +39,7 @@ class HomePage extends React.Component {
         <p>You're logged in with React!!</p>
         <h3>All registered users:</h3>
         <p>
-          <Link to="/login">Logout</Link>
+          <a onClick={this.logout}>Logout</a>
         </p>
       </div>
     );
@@ -47,5 +56,18 @@ function mapStateToProps(state) {
   };
 }
 
-const connectedHomePage = connect(mapStateToProps)(HomePage);
+export const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getAll: () => {
+      dispatch(userActions.getAll());
+    },
+    logout: () => {
+      dispatch(userActions.logout());
+    },
+  };
+};
+
+const connectedHomePage = connect(mapStateToProps, mapDispatchToProps)(
+  HomePage
+);
 export { connectedHomePage as HomePage };

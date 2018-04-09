@@ -1,3 +1,5 @@
+@import './css_template.scss';
+
 .App {
   text-align: center;
 }
@@ -20,6 +22,11 @@
 
 .App-intro {
   font-size: large;
+}
+
+a {
+  cursor: pointer;
+  color: $brand-primary;
 }
 
 @keyframes App-logo-spin {

@@ -190,18 +190,18 @@ app.post('/users/authenticate', function(req, res, next) {
           // Regenerate session when signing in
           // to prevent fixation
           const user = rows[0];
-          req.session.regenerate(function() {
-            // Store the user's primary key
-            // in the session store to be retrieved,
-            // or in this case the entire user object
-            req.session.user = user;
-            req.session.success =
-              'Authenticated as ' +
-              user.first_name +
-              ' click to <a href="/logout">logout</a>. ' +
-              ' You may now access <a href="/restricted">/restricted</a>.';
-            // res.redirect('back');
-          });
+          // req.session.regenerate(function() {
+          //   // Store the user's primary key
+          //   // in the session store to be retrieved,
+          //   // or in this case the entire user object
+          //   req.session.user = user;
+          //   req.session.success =
+          //     'Authenticated as ' +
+          //     user.first_name +
+          //     ' click to <a href="/logout">logout</a>. ' +
+          //     ' You may now access <a href="/restricted">/restricted</a>.';
+          //   // res.redirect('back');
+          // });
           res.json(rows);
         }
         // res.end('ok');
@@ -215,12 +215,13 @@ app.post('/users/authenticate', function(req, res, next) {
   });
 });
 
-app.get('/logout', function(req, res) {
+app.get('/users/logout', function(req, res) {
   // destroy the user's session to log them out
   // will be re-created next request
-  req.session.destroy(function() {
-    res.redirect('/');
-  });
+  // req.session.destroy(function() {
+  //
+  // });
+  res.end('ok');
 });
 
 /*

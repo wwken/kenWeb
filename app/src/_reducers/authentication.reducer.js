@@ -13,9 +13,14 @@ export function authentication(state = initialState, action) {
       state = state.set('user', Immutable.fromJS(action.user));
       break;
     case userConstants.LOGIN_FAILURE:
+      state = state.set('loggingIn', false);
+      state = state.set('loggedIn', false);
+      state = state.set('user', null);
       break;
     case userConstants.LOGOUT:
+      state = state.set('loggingIn', false);
       state = state.set('loggedIn', false);
+      state = state.set('user', null);
       break;
     default:
       break;
