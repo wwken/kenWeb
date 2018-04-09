@@ -6,6 +6,8 @@
 
 # testing
 /coverage
+/app/coverage
+/app/.nyc_output
 
 # production
 /build
@@ -25,3 +27,5 @@ yarn-error.log*
 
 /packages/.DS_Store
 /packages/*/node_modules
+
+app/package-lock.json
