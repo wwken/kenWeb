@@ -28,8 +28,11 @@
     "server": "node src/restful-servers/server.js",
     "server:debug": "devtool src/restful-servers/server.js",
     "build": "react-scripts build",
-    "test": "BABEL_DISABLE_CACHE=1 ${NODE_ARGS:-node} ./node_modules/.bin/blue-tape -r ignore-styles -r babel-register -- 'src/**/*-spec.js*'",
+    "test": "yarnpkg test:app",
+    "test:app": "yarnpkg test:files -- 'src/**/*-spec.j*'",
+    "test:files": "BABEL_DISABLE_CACHE=1 ${NODE_ARGS:-node} ./node_modules/.bin/blue-tape -r ignore-styles -r babel-register",
     "test:cover": "./node_modules/.bin/nyc -n 'src/**/*' yarn test",
+    "test:debug": "NODE_ARGS='node --inspect-brk=0.0.0.0:5858' yarnpkg test",
     "test-jest": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:reset": "rm -rf node_modules; yarnpkg install"
