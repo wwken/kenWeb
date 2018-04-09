@@ -2,6 +2,16 @@ import { authHeader } from '../_helpers';
 var isArrayEmpty = require('./../utils/objUtils').isArrayEmpty;
 var config = require('./../restful-servers/server/config');
 
+var rand = function() {
+  return Math.random()
+    .toString(36)
+    .substr(2); // remove `0.`
+};
+
+var token = function() {
+  return rand() + rand(); // to make it longer
+};
+
 export const userService = {
   login,
   logout,
@@ -14,6 +24,14 @@ export const userService = {
 
 const address = 'http://' + config.server.host + ':' + config.server.port;
 
+function handleResponse(response) {
+  if (!response.ok) {
+    return Promise.reject(response.statusText);
+  }
+
+  return response.json();
+}
+
 function login(username, password) {
   const requestOptions = {
     method: 'POST',
@@ -24,16 +42,12 @@ function login(username, password) {
     body: 'json=' + JSON.stringify({ username, password }),
   };
   return fetch(address + '/users/authenticate', requestOptions)
-    .then(response => {
-      if (!response.ok) {
-        return Promise.reject(response.statusText);
-      }
-      return response.json();
-    })
+    .then(handleResponse)
     .then(users => {
       var user = null;
       if (!isArrayEmpty(users)) {
         user = users[0];
+        user.token = token();
         // login successful if there's a jwt token in the response
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
@@ -93,12 +107,4 @@ function _delete(id) {
   };
 
   return fetch('/users/' + id, requestOptions).then(handleResponse);
-}
-
-function handleResponse(response) {
-  if (!response.ok) {
-    return Promise.reject(response.statusText);
-  }
-
-  return response.json();
 }

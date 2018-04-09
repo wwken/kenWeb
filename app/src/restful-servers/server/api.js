@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 // var favicon = require('serve-favicon');
 // var logger = require('morgan');
 // var methodOverride = require('method-override');
@@ -104,6 +105,26 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(
+  session({
+    resave: false, // don't save session if unmodified
+    saveUninitialized: false, // don't create session until something stored
+    secret: 'shhhh, very secret',
+  })
+);
+// Session-persisted message middleware
+
+app.use(function(req, res, next) {
+  var err = req.session.error;
+  var msg = req.session.success;
+  delete req.session.error;
+  delete req.session.success;
+  res.locals.message = '';
+  if (err) res.locals.message = '<p class="msg error">' + err + '</p>';
+  if (msg) res.locals.message = '<p class="msg success">' + msg + '</p>';
+  next();
+});
+
 var info = function(s) {
   console.info(getTimeStr() + ' ' + s);
 };
@@ -166,13 +187,39 @@ app.post('/users/authenticate', function(req, res, next) {
       conn.release();
       if (isVariableEmpty(err)) {
         if (!isArrayEmpty(rows)) {
-          res.send(rows);
+          // Regenerate session when signing in
+          // to prevent fixation
+          const user = rows[0];
+          req.session.regenerate(function() {
+            // Store the user's primary key
+            // in the session store to be retrieved,
+            // or in this case the entire user object
+            req.session.user = user;
+            req.session.success =
+              'Authenticated as ' +
+              user.first_name +
+              ' click to <a href="/logout">logout</a>. ' +
+              ' You may now access <a href="/restricted">/restricted</a>.';
+            // res.redirect('back');
+          });
+          res.json(rows);
         }
-        res.end('ok');
+        // res.end('ok');
       } else {
+        req.session.error =
+          'Authentication failed, please check your ' +
+          ' username and password.';
         next(err);
       }
     });
+  });
+});
+
+app.get('/logout', function(req, res) {
+  // destroy the user's session to log them out
+  // will be re-created next request
+  req.session.destroy(function() {
+    res.redirect('/');
   });
 });
 
