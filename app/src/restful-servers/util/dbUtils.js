@@ -1,5 +1,5 @@
 require('./global');
-var isVariableNotDefined = require('./objUtils').isVariableNotDefined;
+var isVariableNotDefined = require('../../utils/objUtils').isVariableNotDefined;
 
 module.exports = {
   createParams: function(keys, values) {

@@ -1,4 +1,5 @@
 import { authHeader } from '../_helpers';
+var isArrayEmpty = require('./../utils/objUtils').isArrayEmpty;
 var config = require('./../restful-servers/server/config');
 
 export const userService = {
@@ -24,20 +25,19 @@ function login(username, password) {
   };
   return fetch(address + '/users/authenticate', requestOptions)
     .then(response => {
-      // if (!response.ok) {
-      //   return Promise.reject(response.statusText);
-      // }
-
-      // return response.send({'user': {'token': 'dddd'}});
+      if (!response.ok) {
+        return Promise.reject(response.statusText);
+      }
       return response.json();
     })
-    .then(user => {
-      // login successful if there's a jwt token in the response
-      if (user && user.token) {
+    .then(users => {
+      var user = null;
+      if (!isArrayEmpty(users)) {
+        user = users[0];
+        // login successful if there's a jwt token in the response
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
       }
-
       return user;
     });
 }

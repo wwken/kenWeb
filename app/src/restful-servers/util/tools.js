@@ -1,6 +1,6 @@
 require('./global');
-var isVariableNotDefined = require('./objUtils').isVariableNotDefined;
-var isVariableEmpty = require('./objUtils').isVariableEmpty;
+var isVariableNotDefined = require('../../utils/objUtils').isVariableNotDefined;
+var isVariableEmpty = require('../../utils/objUtils').isVariableEmpty;
 
 /**
  * Created by Ken Wu on 1/14/17.
