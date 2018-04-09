@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { isNil } from 'lodash';
 import { userActions } from '../actions';
 
 class HomePage extends React.Component {
@@ -13,11 +13,20 @@ class HomePage extends React.Component {
     return e => this.props.dispatch(userActions.delete(id));
   }
 
+  getUserName() {
+    const { user } = this.props;
+    let n = '';
+    if (!isNil(user)) {
+      n = user.first_name;
+    }
+    return n;
+  }
+
   render() {
-    const { user, users } = this.props;
+    const userName = this.getUserName();
     return (
       <div className="col-md-6 col-md-offset-3">
-        <h1>Hi {user.firstName}!</h1>
+        <h1>Hi {userName}!</h1>
         <p>You're logged in with React!!</p>
         <h3>All registered users:</h3>
         <p>
@@ -30,10 +39,11 @@ class HomePage extends React.Component {
 
 function mapStateToProps(state) {
   const { users, authentication } = state;
-  const { user } = authentication;
+  const user = isNil(users.toJS().user)
+    ? authentication.toJS().user
+    : users.toJS().user;
   return {
     user,
-    users,
   };
 }
 

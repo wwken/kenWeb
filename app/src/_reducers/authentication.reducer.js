@@ -1,25 +1,24 @@
 import { userConstants } from '../_constants';
-
-let user = JSON.parse(localStorage.getItem('user'));
-const initialState = user ? { loggedIn: true, user } : {};
+import Immutable from 'immutable';
+import initialState from './initialState';
 
 export function authentication(state = initialState, action) {
   switch (action.type) {
     case userConstants.LOGIN_REQUEST:
-      return {
-        loggingIn: true,
-        user: action.user
-      };
+      state = state.set('loggingIn', true);
+      state = state.set('user', Immutable.fromJS(action.user));
+      break;
     case userConstants.LOGIN_SUCCESS:
-      return {
-        loggedIn: true,
-        user: action.user
-      };
+      state = state.set('loggedIn', true);
+      state = state.set('user', Immutable.fromJS(action.user));
+      break;
     case userConstants.LOGIN_FAILURE:
-      return {};
+      break;
     case userConstants.LOGOUT:
-      return {};
+      state = state.set('loggedIn', false);
+      break;
     default:
-      return state
+      break;
   }
+  return state;
 }

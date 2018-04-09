@@ -61,13 +61,20 @@ function logout() {
   localStorage.removeItem('user');
 }
 
+/*
+  This method sould be called to get all previous saved stuffs
+ */
 function getAll() {
   const requestOptions = {
     method: 'GET',
     headers: authHeader(),
   };
 
-  return fetch('/users', requestOptions).then(handleResponse);
+  return fetch('/users', requestOptions).then(function(s) {
+    return {
+      user: JSON.parse(localStorage.getItem('user')),
+    };
+  });
 }
 
 function getById(id) {

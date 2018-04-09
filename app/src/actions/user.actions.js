@@ -79,7 +79,7 @@ function getAll() {
     userService
       .getAll()
       .then(
-        users => dispatch(success(users)),
+        objs => dispatch(success(objs['user'])),
         error => dispatch(failure(error))
       );
   };

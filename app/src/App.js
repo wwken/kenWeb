@@ -1,24 +1,34 @@
 import React from 'react';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { LoginPage } from './components/LoginPage'
-import * as SocialActions from './actions/social'
-import { alertActions } from './actions'
-import { HomePage } from './components/HomePage'
-import { RegisterPage } from './components/RegisterPage'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { LoginPage } from './components/LoginPage';
+import * as SocialActions from './actions/social';
+import { alertActions } from './actions';
+import { HomePage } from './components/HomePage';
+import { RegisterPage } from './components/RegisterPage';
 import { Router, Route, Redirect } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory'
-import logo from './logo.svg'
-import './App.css'
-const history = createHistory()
+import createHistory from 'history/createBrowserHistory';
+import logo from './logo.svg';
+import './App.css';
+const history = createHistory();
+
+const user = localStorage.getItem('user');
+
+console.log('In App.js, user: ', user);
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    localStorage.getItem('user')
-      ? <Component {...props} />
-      : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
-  )} />
-)
+  <Route
+    {...rest}
+    render={props =>
+      user ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{ pathname: '/login', state: { from: props.location } }}
+        />
+      )}
+  />
+);
 
 class App extends React.Component {
   constructor(props) {
@@ -36,9 +46,9 @@ class App extends React.Component {
       <div className="jumbotron">
         <div className="container">
           <div className="col-sm-8 col-sm-offset-2">
-            {alert.message &&
-            <div className={`alert ${alert.type}`}>{alert.message}</div>
-            }
+            {alert.message && (
+              <div className={`alert ${alert.type}`}>{alert.message}</div>
+            )}
             <Router history={history}>
               <div>
                 <PrivateRoute exact path="/" component={HomePage} />
@@ -56,12 +66,12 @@ class App extends React.Component {
 function mapStateToProps(state) {
   const { alert } = state;
   return {
-    alert
-  }
+    alert,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(SocialActions, dispatch)
+  return bindActionCreators(SocialActions, dispatch);
 }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(BuyerMain)
