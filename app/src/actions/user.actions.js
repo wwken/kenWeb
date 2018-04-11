@@ -9,6 +9,7 @@ export const userActions = {
   logout,
   register,
   getAll,
+  editProfile,
   delete: _delete,
 };
 
@@ -76,6 +77,12 @@ function logout() {
       });
       window.location.href = '/';
     });
+  };
+}
+
+function editProfile() {
+  return dispatch => {
+    window.location.href = '/editProfile';
   };
 }
 

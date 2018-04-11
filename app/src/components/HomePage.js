@@ -7,7 +7,7 @@ import { userActions } from '../actions';
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, ['logout']);
+    bindAll(this, ['logout', 'editProfile']);
   }
 
   componentDidMount() {
@@ -31,6 +31,10 @@ class HomePage extends React.Component {
     this.props.logout();
   }
 
+  editProfile() {
+    this.props.editProfile();
+  }
+
   render() {
     const userName = this.getUserName();
     return (
@@ -39,6 +43,7 @@ class HomePage extends React.Component {
         <p>You're logged in with React!!</p>
         <h3>All registered users:</h3>
         <p>
+          <a onClick={this.editProfile}>Edit Profile</a> |{' '}
           <a onClick={this.logout}>Logout</a>
         </p>
       </div>
@@ -63,6 +68,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
     },
     logout: () => {
       dispatch(userActions.logout());
+    },
+    editProfile: () => {
+      dispatch(userActions.editProfile());
     },
   };
 };

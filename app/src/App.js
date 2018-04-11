@@ -5,6 +5,7 @@ import { LoginPage } from './components/LoginPage';
 import * as SocialActions from './actions/social';
 import { alertActions } from './actions';
 import { HomePage } from './components/HomePage';
+import { EditProfile } from './components/EditProfile';
 import { RegisterPage } from './components/RegisterPage';
 import { Router, Route, Redirect } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
@@ -54,6 +55,7 @@ class App extends React.Component {
                 <PrivateRoute exact path="/" component={HomePage} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />
+                <Route path="/editProfile" component={EditProfile} />
               </div>
             </Router>
           </div>
