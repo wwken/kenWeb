@@ -125,6 +125,13 @@ app.use(function(req, res, next) {
   next();
 });
 
+// all static files resources
+app.use(express.static('wuahge'));
+var dirName = process.env.KENWEB_ROOT;
+var staticWebRootDir = dirName + '';
+console.log('Mapping __dirname as web static files root: ' + staticWebRootDir);
+app.use('/wuahge', express.static(staticWebRootDir));
+
 var info = function(s) {
   console.info(getTimeStr() + ' ' + s);
 };
