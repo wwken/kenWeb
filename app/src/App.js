@@ -5,6 +5,7 @@ import { LoginPage } from './components/LoginPage';
 import * as SocialActions from './actions/social';
 import { alertActions } from './actions';
 import { HomePage } from './components/HomePage';
+import { IndexPage } from './components/IndexPage';
 import { EditProfile } from './components/EditProfile';
 import { RegisterPage } from './components/RegisterPage';
 import { Router, Route, Redirect } from 'react-router-dom';
@@ -52,7 +53,8 @@ class App extends React.Component {
             )}
             <Router history={history}>
               <div>
-                <PrivateRoute exact path="/" component={HomePage} />
+                <PrivateRoute exact path="/home" component={HomePage} />
+                <Route path="/" component={IndexPage} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />
                 <Route path="/editProfile" component={EditProfile} />
