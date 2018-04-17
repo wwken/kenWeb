@@ -1,6 +1,6 @@
 const { test } = require('blue-tape');
-
-const { isArrayEmpty, isVariableEmpty } = require('./objUtils');
+var config = require('./../restful-servers/server/config');
+const { isArrayEmpty, isVariableEmpty, translateURL } = require('./objUtils');
 
 test('objUtils-spec', t => {
   t.notOk(isArrayEmpty(['a']), 'isArrayEmpty 1');
@@ -17,6 +17,9 @@ test('objUtils-spec', t => {
   t.ok(isVariableEmpty(), 'isVariableEmpty 1');
 
   t.notOk(isVariableEmpty('a'), 'isVariableEmpty 2');
+
+  const url = 'image/Hello.png';
+  t.equal(translateURL(url), config.resourceServerAddress + url);
 
   t.end();
 });

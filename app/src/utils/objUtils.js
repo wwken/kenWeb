@@ -1,5 +1,5 @@
 var _ = require('lodash');
-
+var config = require('./../restful-servers/server/config');
 var isVariableNotDefined = function(v) {
   return v === undefined || v === null;
 };
@@ -28,4 +28,13 @@ module.exports = {
   },
 
   isVariableNotDefined,
+
+  translateURL: function(url) {
+    if (url.indexOf('http') == 0) {
+      return url;
+    } else {
+      var z = config.resourceServerAddress + url;
+      return z;
+    }
+  },
 };

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 var config = require('./../restful-servers/server/config');
+var objUtils = require('./objUtils');
 
 export function getImageURL(u) {
   return config.resourceServerAddress + '/img/' + u;
@@ -29,16 +30,12 @@ Page.propTypes = {
 };
 
 export function translateURL(url) {
-  if (url.indexOf('http') == 0) {
-    return url;
-  } else {
-    return config.resourceServerAddress + '/' + url;
-  }
+  return objUtils.translateURL(url);
 }
 
 export function addJSscript(url) {
   const script = document.createElement('script');
   script.src = translateURL(url);
-  script.async = true;
+  script.async = false;
   document.body.appendChild(script);
 }
