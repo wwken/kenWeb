@@ -2,6 +2,11 @@
     background: #fafafa url('http://localhost:3001/wuahge/img/custom/arch-hero-t.png') right 0/auto 100% no-repeat;
 }
 
+.section-primary-login {
+    background:url(http://localhost:3001/wuahge/img/new/corinne-kutz.jpg);
+    background-size:cover;
+}
+
 .margin-top-20 {
     margin-top: 20px;
 }

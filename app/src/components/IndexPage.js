@@ -16,7 +16,6 @@ class IndexPage extends React.Component {
   }
 
   render() {
-    //dew Index
     return (
       <div className="wrapper">
         <Header />
