@@ -35,7 +35,7 @@ class Footer extends React.Component {
                         <a
                           href="login.html"
                           className="btn btn-primary btn-primary-new"
-                          style={{ 'margin-left': '10px' }}
+                          style={{ marginLeft: '10px' }}
                         >
                           ADD ME
                         </a>
@@ -168,20 +168,24 @@ class Footer extends React.Component {
                       <i className="ion-ios-location" />{' '}
                       <strong> Address</strong>
                       <br />
-                      795 Folsom Ave, Suite 600 San Francisco, CA 94107<br />
+                      180 Madison Ave, New York, NY 10016<br />
                     </address>
+                    <abbr title="WeChat Contact">
+                      <strong>WeChat Contact:</strong>
+                    </abbr>{' '}
+                    wwken926<br />
                     <abbr title="Phone Number">
                       <strong>Phone:</strong>
                     </abbr>{' '}
-                    (91) 8547 632521<br />
-                    <abbr title="Fax">
-                      <strong>Fax:</strong>
+                    (347) 993 8421<br />
+                    <abbr title="WhatsApp Contact">
+                      <strong>WhatsApp Contact:</strong>
                     </abbr>{' '}
-                    (91) 11 4752 1433<br />
+                    1 (347) 993 8421<br />
                     <abbr title="Email Address">
                       <strong>Email:</strong>
                     </abbr>{' '}
-                    info@express.com
+                    info@wuahge.com
                   </div>
                 </section>
               </div>

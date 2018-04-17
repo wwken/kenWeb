@@ -1,5 +1,6 @@
 import React from 'react';
 import { getImageURL } from '../../utils/render';
+import classnames from 'classnames';
 
 class Header extends React.Component {
   constructor(props) {
