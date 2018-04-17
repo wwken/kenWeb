@@ -23,7 +23,6 @@
 @import url("../public/vendor/style-switcher/style-switcher.css");
 @import url("../public/vendor/style-switcher/bootstrap-colorpicker/css/bootstrap-colorpicker.css");
 
-
 .section-primary-background {
-    background: #fafafa url(../public/img/custom/arch-hero-t.png) right 0/auto 100% no-repeat;
+    background: #fafafa url('http://localhost:3001/wuahge/img/custom/arch-hero-t.png') right 0/auto 100% no-repeat;
 }

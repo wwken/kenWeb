@@ -8,6 +8,10 @@ import { Header } from './shared/Header';
 import './main.css';
 
 import IOS from '../public/img/icons/ios-icon-medium@2x.png';
+import JAVA from '../public/img/icons/java_logo_1.png';
+import BIG_DATA from '../public/img/icons/big-data.png';
+import ANDROID from '../public/img/icons/android-icon-medium@2x.png';
+import HTML from '../public/img/icons/Html-tags-icon.png';
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -15,15 +19,14 @@ class IndexPage extends React.Component {
   }
 
   render() {
-    const content = 'dew ni';
     return (
       <div className="wrapper">
         <Header />
         <div className="page">
           <div className="page-inner p-none no-border">
-            <section className="section-primary main-color b-bordered section-primary-background">
-              <div className="container">
-                <div className="row">
+            <section className="section-primary b-bordered section-primary-background">
+              <div className="container margin-top-40">
+                <div className="row margin-top-40">
                   <div className="col-md-12">
                     <i className="ion-android-checkmark-circle fs-60 primary-color" />
                     <h4 className="fs-13 fw-6 o-6 mt-20 mb-5 body-font">
@@ -43,7 +46,6 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="100"
                         >
-                          {content}
                           <img src={IOS} width="55" height="55" />
                           <a className="mt-10" href="#">
                             Mac
@@ -54,7 +56,7 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="200"
                         >
-                          <img src="img/icons/java_logo_1.png" width="55" />
+                          <img src={JAVA} width="55" />
                           <a className="mt-10" href="#">
                             Java
                           </a>
@@ -64,7 +66,7 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="400"
                         >
-                          <img src="img/icons/big-data.png" width="55" />
+                          <img src={BIG_DATA} width="55" />
                           <a className="mt-10" href="#">
                             Big Data
                           </a>
@@ -74,10 +76,7 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="300"
                         >
-                          <img
-                            src="img/icons/android-icon-medium@2x.png"
-                            width="55"
-                          />
+                          <img src={ANDROID} width="55" />
                           <a className="mt-10" href="#">
                             Android
                           </a>
@@ -87,7 +86,7 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="500"
                         >
-                          <img src="img/icons/Html-tags-icon.png" width="55" />
+                          <img src={HTML} width="55" />
                           <a className="mt-10" href="#">
                             Html/Web
                           </a>
