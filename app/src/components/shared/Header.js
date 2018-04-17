@@ -1,6 +1,5 @@
 import React from 'react';
 import { getImageURL } from '../../utils/render';
-import classnames from 'classnames';
 
 class Header extends React.Component {
   constructor(props) {
@@ -388,7 +387,7 @@ class Header extends React.Component {
                               <li>
                                 <a
                                   className="dropdown-item"
-                                  href="pages-contact-us.html"
+                                  href="contact_us.html"
                                 >
                                   Contact
                                 </a>

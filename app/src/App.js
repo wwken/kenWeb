@@ -8,6 +8,7 @@ import { HomePage } from './components/HomePage';
 import { IndexPage } from './components/IndexPage';
 import { EditProfile } from './components/EditProfile';
 import { RegisterPage } from './components/RegisterPage';
+import { ContactUsPage } from './components/ContactUsPage';
 import { Router, Route, Redirect, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import logo from './logo.svg';
@@ -51,6 +52,7 @@ class App extends React.Component {
             <PrivateRoute exact path="/home" component={HomePage} />
             <Route path="/login.html" component={LoginPage} />
             <Route path="/register.html" component={RegisterPage} />
+            <Route path="/contact_us.html" component={ContactUsPage} />
             <Route path="/editProfile" component={EditProfile} />
             <Route path="/" component={IndexPage} />
           </Switch>
