@@ -23,27 +23,24 @@ class Footer extends React.Component {
                   </p>
 
                   <div className="clearfix">
-                    <form
-                      id="newsletterForm"
-                      action="php/newsletter-subscribe.php"
-                      method="POST"
-                      noValidate="novalidate"
-                    >
-                      <div className="input-group">
-                        <input
-                          className="form-control"
-                          placeholder="Email Address"
-                          name="newsletterEmail"
-                          id="newsletterEmail"
-                          type="text"
-                        />
-                        <span className="input-group-btn">
-                          <button className="btn btn-light" type="submit">
-                            <i className="fa fa-search" />
-                          </button>
-                        </span>
+                    <div className="input-group">
+                      <input
+                        className="form-control"
+                        placeholder="Email Address"
+                        name="newsletterEmail"
+                        id="newsletterEmail"
+                        type="text"
+                      />
+                      <div className="btn-in-footer">
+                        <a
+                          href="login.html"
+                          className="btn btn-primary btn-primary-new"
+                          style={{ 'margin-left': '10px' }}
+                        >
+                          ADD ME
+                        </a>
                       </div>
-                    </form>
+                    </div>
                   </div>
 
                   <div className="clearfix social-wrap mt-25">
@@ -198,7 +195,7 @@ class Footer extends React.Component {
               <div className="col-sm-6">
                 <ul className="list-inline fs-13 mb-none">
                   <li>
-                    <p className="mb-0 fw-6">© 2015-2018 Express</p>
+                    <p className="mb-0 fw-6">© 2018 WuahGe.com</p>
                   </li>
                   <li>
                     <a href="pages-about.html">About</a>
