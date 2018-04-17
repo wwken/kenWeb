@@ -179,7 +179,7 @@ class IndexPage extends React.Component {
                           </ul>
                           <a
                             href="login.html"
-                            className="btn btn-primary"
+                            className="btn btn-primary btn-primary-new"
                             target="_self"
                           >
                             Sign up now!
