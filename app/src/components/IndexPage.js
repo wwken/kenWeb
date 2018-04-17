@@ -13,12 +13,15 @@ import BIG_DATA from '../public/img/icons/big-data.png';
 import ANDROID from '../public/img/icons/android-icon-medium@2x.png';
 import HTML from '../public/img/icons/Html-tags-icon.png';
 
+import { getImageURL } from '../utils/render';
+
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    //dew Index
     return (
       <div className="wrapper">
         <Header />
@@ -261,7 +264,7 @@ class IndexPage extends React.Component {
                               data-title="twitter"
                               data-location="top"
                             >
-                              <img src="img/clients/twitter.png" />
+                              <img src={getImageURL('clients/twitter.png')} />
                             </a>
                           </figure>
                         </div>
@@ -273,7 +276,7 @@ class IndexPage extends React.Component {
                               data-title="facebook"
                               data-location="top"
                             >
-                              <img src="img/clients/facebook.png" />
+                              <img src={getImageURL('clients/facebook.png')} />
                             </a>
                           </figure>
                         </div>
@@ -285,7 +288,7 @@ class IndexPage extends React.Component {
                               data-title="IBM"
                               data-location="top"
                             >
-                              <img src="img/clients/ibm.png" />
+                              <img src={getImageURL('clients/ibm.png')} />
                             </a>
                           </figure>
                         </div>
@@ -297,7 +300,7 @@ class IndexPage extends React.Component {
                               data-title="toshiba"
                               data-location="top"
                             >
-                              <img src="img/clients/toshiba.png" />
+                              <img src={getImageURL('clients/toshiba.png')} />
                             </a>
                           </figure>
                         </div>
@@ -309,19 +312,7 @@ class IndexPage extends React.Component {
                               data-title="paypal"
                               data-location="top"
                             >
-                              <img src="img/clients/paypal.png" />
-                            </a>
-                          </figure>
-                        </div>
-                        <div className="item">
-                          <figure>
-                            <a
-                              className="lite-tooltip"
-                              href="#"
-                              data-title="twitter"
-                              data-location="top"
-                            >
-                              <img src="img/clients/twitter.png" />
+                              <img src={getImageURL('clients/paypal.png')} />
                             </a>
                           </figure>
                         </div>
@@ -367,7 +358,10 @@ class IndexPage extends React.Component {
                   <div className="col-md-5">
                     <aside className="guide common-Card">
                       <div className="cover">
-                        <img src="img/clients/youtube.png" className="pt-25" />
+                        <img
+                          src={getImageURL('clients/youtube.png')}
+                          className="pt-25"
+                        />
                       </div>
                       <h2>Check out our YouTube channels!</h2>
                       <p className=" pb-20">

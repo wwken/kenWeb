@@ -8,7 +8,7 @@ import { HomePage } from './components/HomePage';
 import { IndexPage } from './components/IndexPage';
 import { EditProfile } from './components/EditProfile';
 import { RegisterPage } from './components/RegisterPage';
-import { Router, Route, Redirect } from 'react-router-dom';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import logo from './logo.svg';
 import './App.css';
@@ -46,12 +46,14 @@ class App extends React.Component {
     const { alert } = this.props;
     return (
       <Router history={history}>
-        <div>
-          <PrivateRoute exact path="/home" component={HomePage} />
-          <Route path="/" component={IndexPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/editProfile" component={EditProfile} />
+        <div className={'dewRouter'}>
+          <Switch>
+            <PrivateRoute exact path="/home" component={HomePage} />
+            <Route path="/login.html" component={LoginPage} />
+            <Route path="/register.html" component={RegisterPage} />
+            <Route path="/editProfile" component={EditProfile} />
+            <Route path="/" component={IndexPage} />
+          </Switch>
         </div>
       </Router>
     );

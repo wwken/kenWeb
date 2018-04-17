@@ -22,7 +22,7 @@ export const userService = {
   delete: _delete,
 };
 
-const address = 'http://' + config.server.host + ':' + config.server.port;
+const address = config.server.address;
 
 function handleResponse(response) {
   if (!response.ok) {

@@ -30,6 +30,11 @@ var server = (module.exports.server = {
   databasetest: 'dev-test', // This is for unit-test dev only
 });
 
+module.exports.serverAddress =
+  server.protocol + '://' + server.host + ':' + server.port;
+module.exports.resourceServerAddress =
+  server.protocol + '://' + server.host + ':' + server.port + '/wuahge/';
+
 module.exports.IsDev = function() {
   return server.env.toLowerCase() == 'dev';
 };
