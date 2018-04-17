@@ -27,3 +27,18 @@ Page.propTypes = {
   component: PropTypes.node,
   pageClassName: PropTypes.string,
 };
+
+export function translateURL(url) {
+  if (url.indexOf('http') == 0) {
+    return url;
+  } else {
+    return config.resourceServerAddress + '/' + url;
+  }
+}
+
+export function addJSscript(url) {
+  const script = document.createElement('script');
+  script.src = translateURL(url);
+  script.async = true;
+  document.body.appendChild(script);
+}

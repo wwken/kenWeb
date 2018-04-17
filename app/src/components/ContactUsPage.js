@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page } from './../utils/render';
+import { Page, addJSscript } from './../utils/render';
 import './main.css';
 
 import { getImageURL } from '../utils/render';
@@ -7,6 +7,14 @@ import { getImageURL } from '../utils/render';
 class ContactUsPage extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    addJSscript('vendor/jquery.gmap/map-styles.js');
+    addJSscript(
+      'https://maps.googleapis.com/maps/api/js?key=AIzaSyBIy24644w-ZBEOCfMfzYPYeULbuKJg_rs'
+    );
+    addJSscript('vendor/jquery.gmap/jquery.gmap.min.js');
   }
 
   render() {
