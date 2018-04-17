@@ -7,12 +7,15 @@ import { Header } from './shared/Header';
 
 import './main.css';
 
+import IOS from '../public/img/icons/ios-icon-medium@2x.png';
+
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    const content = 'dew ni';
     return (
       <div className="wrapper">
         <Header />
@@ -40,10 +43,8 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="100"
                         >
-                          <img
-                            src="img/icons/ios-icon-medium@2x.png"
-                            width="55"
-                          />
+                          {content}
+                          <img src={IOS} width="55" height="55" />
                           <a className="mt-10" href="#">
                             Mac
                           </a>
