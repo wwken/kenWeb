@@ -8,12 +8,6 @@ import { Footer } from './shared/Footer';
 
 import './main.css';
 
-import IOS from '../public/img/icons/ios-icon-medium@2x.png';
-import JAVA from '../public/img/icons/java_logo_1.png';
-import BIG_DATA from '../public/img/icons/big-data.png';
-import ANDROID from '../public/img/icons/android-icon-medium@2x.png';
-import HTML from '../public/img/icons/Html-tags-icon.png';
-
 import { getImageURL } from '../utils/render';
 
 class IndexPage extends React.Component {
@@ -50,7 +44,11 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="100"
                         >
-                          <img src={IOS} width="55" height="55" />
+                          <img
+                            src={getImageURL('icons/ios-icon-medium@2x.png')}
+                            width="55"
+                            height="55"
+                          />
                           <a className="mt-10" href="#">
                             Mac
                           </a>
@@ -60,7 +58,10 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="200"
                         >
-                          <img src={JAVA} width="55" />
+                          <img
+                            src={getImageURL('icons/java_logo_1.png')}
+                            width="55"
+                          />
                           <a className="mt-10" href="#">
                             Java
                           </a>
@@ -70,7 +71,10 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="400"
                         >
-                          <img src={BIG_DATA} width="55" />
+                          <img
+                            src={getImageURL('icons/big-data.png')}
+                            width="55"
+                          />
                           <a className="mt-10" href="#">
                             Big Data
                           </a>
@@ -80,7 +84,12 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="300"
                         >
-                          <img src={ANDROID} width="55" />
+                          <img
+                            src={getImageURL(
+                              'icons/android-icon-medium@2x.png'
+                            )}
+                            width="55"
+                          />
                           <a className="mt-10" href="#">
                             Android
                           </a>
@@ -90,7 +99,10 @@ class IndexPage extends React.Component {
                           data-animation="bottom-to-top"
                           data-delay="500"
                         >
-                          <img src={HTML} width="55" />
+                          <img
+                            src={getImageURL('icons/Html-tags-icon.png')}
+                            width="55"
+                          />
                           <a className="mt-10" href="#">
                             Html/Web
                           </a>

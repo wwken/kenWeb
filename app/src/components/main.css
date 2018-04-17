@@ -1,28 +1,19 @@
-@import url("../public/vendor/tether/tether.min.css");
-@import url("../public/vendor/bootstrap/css/bootstrap.min.css");
-@import url("../public/css/fonts/express-icons.css");
-@import url("../public/vendor/font-awesome/css/font-awesome.min.css");
-@import url("../public/vendor/bootstrap/css/glyphicon.css");
-@import url("../public/vendor/ion-icons/css/ionicons.min.css");
-@import url("../public/vendor/owl-carousel/owl.theme.css");
-@import url("../public/vendor/owl-carousel/owl.carousel.css");
-@import url("../public/vendor/magnific-popup/magnific-popup.css");
-@import url("../public/vendor/lite-tooltip/css/litetooltip.css");
-@import url("../public/css/main.css");
-@import url("../public/css/main-shortcodes.css");
-@import url("../public/css/header.css");
-@import url("../public/css/form-element.css");
-@import url("../public/css/animation.css");
-@import url("../public/css/responsive.css");
-@import url("../public/css/utilities.css");
-@import url("../public/css/skins/default.css");
-@import url("../public/vendor/pricing-tables/main.css");
-@import url("../public/vendor/pricing-tables/responsive.css");
-@import url("../public/vendor/pricing-tables/style_9.css");
-@import url("../public/css/custom.css");
-@import url("../public/vendor/style-switcher/style-switcher.css");
-@import url("../public/vendor/style-switcher/bootstrap-colorpicker/css/bootstrap-colorpicker.css");
-
 .section-primary-background {
     background: #fafafa url('http://localhost:3001/wuahge/img/custom/arch-hero-t.png') right 0/auto 100% no-repeat;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-top-40 {
+    margin-top: 40px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.padding-bottom-20 {
+    padding-bottom: 20px;
 }

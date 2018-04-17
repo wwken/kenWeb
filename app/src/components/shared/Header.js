@@ -1,5 +1,5 @@
 import React from 'react';
-import loglImage from '../../public/img/logo.png';
+import { getImageURL } from '../../utils/render';
 
 class Header extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class Header extends React.Component {
                         alt="Express"
                         width="106"
                         height="69"
-                        src={loglImage}
+                        src={getImageURL('logo.png')}
                       />
                     </a>
                   </div>
