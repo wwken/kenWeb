@@ -11,11 +11,11 @@ export function getImageURL(u) {
   return config.resourceServerAddress + '/img/' + u;
 }
 
-export const Page = ({ component, pageClassName = '' }) => {
+export const Page = ({ component, pageClassName = '', headerActiveTab }) => {
   const pageClass = classnames('page', pageClassName);
   return (
     <div className="wrapper">
-      <Header />
+      <Header headerActiveTab={headerActiveTab} />
       <div className={pageClass}>
         <div className="page-inner p-none no-border">{component}</div>
         <Footer />
@@ -27,6 +27,7 @@ export const Page = ({ component, pageClassName = '' }) => {
 Page.propTypes = {
   component: PropTypes.node,
   pageClassName: PropTypes.string,
+  headerActiveTab: Header.propTypes.headerActiveTab,
 };
 
 export function translateURL(url) {

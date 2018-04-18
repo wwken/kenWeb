@@ -154,7 +154,13 @@ class ContactUsPage extends React.Component {
         </div>
       </div>
     );
-    return <Page component={content} pageClassName={pageClassName} />;
+    return (
+      <Page
+        component={content}
+        pageClassName={pageClassName}
+        headerActiveTab={'about'}
+      />
+    );
   }
 }
 

@@ -1,5 +1,7 @@
 import React from 'react';
-import { getImageURL } from '../../utils/render';
+import { getImageURL, Page } from '../../utils/render';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 class Header extends React.Component {
   constructor(props) {
@@ -7,6 +9,20 @@ class Header extends React.Component {
   }
 
   render() {
+    const className = 'dropdown-item dropdown-toggle';
+    let home = className;
+    let pages = className;
+    let blog = className;
+    let about = className;
+    if (this.props.headerActiveTab === 'home') {
+      home = classnames(home, ' active');
+    } else if (this.props.headerActiveTab === 'pages') {
+      pages = classnames(pages, ' active');
+    } else if (this.props.headerActiveTab === 'blog') {
+      blog = classnames(blog, ' active');
+    } else if (this.props.headerActiveTab === 'about') {
+      about = classnames(about, ' active');
+    }
     return (
       <header
         id="header"
@@ -37,18 +53,12 @@ class Header extends React.Component {
                       <nav className="collapse">
                         <ul className="nav nav-pills" id="mainNav">
                           <li className="dropdown">
-                            <a
-                              className="dropdown-item dropdown-toggle active"
-                              href="index.html"
-                            >
+                            <a className={home} href="index.html">
                               Home{' '}
                             </a>
                           </li>
                           <li className="dropdown">
-                            <a
-                              className="dropdown-item dropdown-toggle"
-                              href="#"
-                            >
+                            <a className={pages} href="#">
                               Pages{' '}
                             </a>
                             <ul className="dropdown-menu">
@@ -205,10 +215,7 @@ class Header extends React.Component {
                             </ul>
                           </li>
                           <li className="dropdown dropdown-mega dropdown-mega-column-3">
-                            <a
-                              className="dropdown-item dropdown-toggle"
-                              href="#"
-                            >
+                            <a className={blog} href="#">
                               Blog
                             </a>
                             <ul className="dropdown-menu">
@@ -354,10 +361,7 @@ class Header extends React.Component {
                             </ul>
                           </li>
                           <li className="dropdown">
-                            <a
-                              className="dropdown-item dropdown-toggle"
-                              href="index.html"
-                            >
+                            <a className={about} href="index.html">
                               About{' '}
                             </a>
                             <ul className="dropdown-menu">
@@ -371,7 +375,7 @@ class Header extends React.Component {
                                       className="dropdown-item"
                                       href="pages-about.html"
                                     >
-                                      About Us
+                                      Who Are We
                                     </a>
                                   </li>
                                   <li>
@@ -466,5 +470,13 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  headerActiveTab: PropTypes.string,
+};
+
+Header.defaultProps = {
+  headerActiveTab: 'home',
+};
 
 export { Header };
