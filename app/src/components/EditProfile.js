@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import { userActions } from '../actions';
 
-import './font-awesome.min.css';
-import './bootstrap.min.css';
+// import './font-awesome.min.css';
+// import './bootstrap.min.css';
 
 class EditProfile extends React.Component {
   constructor(props) {

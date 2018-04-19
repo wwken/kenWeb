@@ -150,17 +150,9 @@ class Header extends React.Component {
                                   <li>
                                     <a
                                       className="dropdown-item"
-                                      href="pages-services.html"
+                                      href="services.html"
                                     >
-                                      Services
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item"
-                                      href="pages-services-2.html"
-                                    >
-                                      Services Alt
+                                      Services Provided
                                     </a>
                                   </li>
                                 </ul>

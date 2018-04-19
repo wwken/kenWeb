@@ -7,6 +7,11 @@
     background-size:cover;
 }
 
+.section-primary-services {
+    height: 120%;
+    background-image: url(http://localhost:3001/wuahge/img/custom/c30.jpg);
+}
+
 .margin-top-20 {
     margin-top: 20px;
 }
