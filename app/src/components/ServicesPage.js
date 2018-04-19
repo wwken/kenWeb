@@ -2,7 +2,7 @@ import React from 'react';
 import { Page, addJSscript } from './../utils/render';
 import './main.css';
 
-import { getImageURL, TeamMemberShortBio } from '../utils/render';
+import { getImageURL, ServiceFeatureShortBio } from '../utils/render';
 
 class ServicesPage extends React.Component {
   constructor(props) {
@@ -26,8 +26,8 @@ class ServicesPage extends React.Component {
             <div className="row">
               <div className="col-sm-12">
                 <h1 className="section-title">
-                  Introducing <strong>Express</strong> Today. A new way to start
-                  an <br />
+                  Introducing <strong>WuahGe.com</strong> Today. A new way to
+                  start an <br />
                   Easy Design Bootstrap Template
                 </h1>
 
@@ -40,6 +40,43 @@ class ServicesPage extends React.Component {
                     <i className="fa fa-heart" /> Purchase<strong> Now</strong>
                   </a>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-primary main-color b-bordered">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-3">
+                <ServiceFeatureShortBio
+                  profileThumbnailURL={'new/n5.jpg'}
+                  title={'hello'}
+                  description={'hello1'}
+                />
+              </div>
+
+              <div class="col-sm-3">
+                <ServiceFeatureShortBio
+                  profileThumbnailURL={'new/n2.jpg'}
+                  title={'hello'}
+                  description={'hello1'}
+                />
+              </div>
+              <div class="col-sm-3">
+                <ServiceFeatureShortBio
+                  profileThumbnailURL={'new/n3.jpg'}
+                  title={'hello'}
+                  description={'hello1'}
+                />
+              </div>
+
+              <div class="col-sm-3">
+                <ServiceFeatureShortBio
+                  profileThumbnailURL={'new/n4.jpg'}
+                  title={'hello'}
+                  description={'hello1'}
+                />
               </div>
             </div>
           </div>

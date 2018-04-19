@@ -99,7 +99,32 @@ export const TeamMemberShortBio = ({
   );
 };
 
-TeamMemberShortBio.propTypes = {
+export const ServiceFeatureShortBio = ({
+  profileThumbnailURL,
+  title,
+  description,
+  summary,
+}) => {
+  return (
+    <div class="v-animation noframe" data-animation="fade-in" data-delay="200">
+      <figure class="clearfix borderframe">
+        <img
+          src={getImageURL(profileThumbnailURL)}
+          class="attachment-full responsive"
+        />
+        <figcaption class="image-caption">
+          <h3 class="fw-4 fs-18 mt-20">{title}</h3>
+          <p>{description}</p>
+          <a href="#" class="read-more">
+            Read More →
+          </a>
+        </figcaption>
+      </figure>
+    </div>
+  );
+};
+
+ServiceFeatureShortBio.propTypes = {
   profileThumbnailURL: PropTypes.string,
   fullName: PropTypes.string,
   position: PropTypes.string,
