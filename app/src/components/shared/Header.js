@@ -373,7 +373,7 @@ class Header extends React.Component {
                                   <li>
                                     <a
                                       className="dropdown-item"
-                                      href="pages-about.html"
+                                      href="about_us.html"
                                     >
                                       Who Are We
                                     </a>

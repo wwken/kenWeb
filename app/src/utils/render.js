@@ -30,6 +30,82 @@ Page.propTypes = {
   headerActiveTab: Header.propTypes.headerActiveTab,
 };
 
+export const TeamMemberShortBio = ({
+  profileThumbnailURL,
+  fullName,
+  position,
+  summary,
+}) => {
+  return (
+    <div className="team-member">
+      <div className="member-photo">
+        <img
+          className="img-responsive"
+          src={getImageURL(profileThumbnailURL)}
+          alt="Express"
+        />
+        <div className="member-social">
+          <div className="member-social-inner">
+            <ul className="list-inline">
+              <li>
+                <a
+                  href="#"
+                  className="tooltips"
+                  data-placement="top"
+                  data-rel="tooltip"
+                  data-original-title="Twitter"
+                >
+                  <i className="fa fa-twitter" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="tooltips"
+                  data-placement="top"
+                  data-rel="tooltip"
+                  data-original-title="Facebook"
+                >
+                  <i className="fa fa-facebook" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="tooltips"
+                  data-placement="top"
+                  data-rel="tooltip"
+                  data-original-title="Google+"
+                >
+                  <i className="fa fa-google-plus" />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="member-info">
+        <div className="member-name">
+          <h3 className="name tt-none">{fullName}</h3>
+        </div>
+        <div className="member-position">
+          <span>{position}</span>
+        </div>
+        <div className="member-desc t-bordered">
+          <span>{summary}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+TeamMemberShortBio.propTypes = {
+  profileThumbnailURL: PropTypes.string,
+  fullName: PropTypes.string,
+  position: PropTypes.string,
+  summary: PropTypes.string,
+};
+
 export function translateURL(url) {
   return objUtils.translateURL(url);
 }
