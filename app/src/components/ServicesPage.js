@@ -50,7 +50,7 @@ class ServicesPage extends React.Component {
             <div class="row">
               <div class="col-sm-3">
                 <ServiceFeatureShortBio
-                  profileThumbnailURL={'new/n5.jpg'}
+                  getImageURL={'new/n5.jpg'}
                   title={'hello'}
                   description={'hello1'}
                 />
@@ -58,14 +58,14 @@ class ServicesPage extends React.Component {
 
               <div class="col-sm-3">
                 <ServiceFeatureShortBio
-                  profileThumbnailURL={'new/n2.jpg'}
+                  getImageURL={'new/n2.jpg'}
                   title={'hello'}
                   description={'hello1'}
                 />
               </div>
               <div class="col-sm-3">
                 <ServiceFeatureShortBio
-                  profileThumbnailURL={'new/n3.jpg'}
+                  getImageURL={'new/n3.jpg'}
                   title={'hello'}
                   description={'hello1'}
                 />
@@ -73,7 +73,7 @@ class ServicesPage extends React.Component {
 
               <div class="col-sm-3">
                 <ServiceFeatureShortBio
-                  profileThumbnailURL={'new/n4.jpg'}
+                  getImageURL={'new/n4.jpg'}
                   title={'hello'}
                   description={'hello1'}
                 />
@@ -262,7 +262,7 @@ class ServicesPage extends React.Component {
         >
           <div
             className="divimage dzsparallaxer--target "
-            data-src="img/custom/c4.jpg"
+            data-src={getImageURL('custom/c4.jpg')}
           />
           <div className="semi-black-overlay" />
           <div className="preloader-semicircles" />
@@ -338,7 +338,7 @@ class ServicesPage extends React.Component {
                             data-title="Dribbble"
                             data-location="top"
                           >
-                            <img src="img/clients/amcor.png" />
+                            <img src={getImageURL('clients/amcor.png')} />
                           </a>
                         </figure>
                       </td>
@@ -350,7 +350,7 @@ class ServicesPage extends React.Component {
                             data-title="VmWare"
                             data-location="top"
                           >
-                            <img src="img/clients/audiopro.png" />
+                            <img src={getImageURL('clients/audiopro.png')} />
                           </a>
                         </figure>
                       </td>
@@ -362,7 +362,7 @@ class ServicesPage extends React.Component {
                             data-title="JQuery"
                             data-location="top"
                           >
-                            <img src="img/clients/Infinity.png" />
+                            <img src={getImageURL('clients/Infinity.png')} />
                           </a>
                         </figure>
                       </td>
@@ -376,7 +376,7 @@ class ServicesPage extends React.Component {
                             data-title="VimeoPRO"
                             data-location="top"
                           >
-                            <img src="img/clients/swann.png" />
+                            <img src={getImageURL('clients/swann.png')} />
                           </a>
                         </figure>
                       </td>
@@ -388,7 +388,7 @@ class ServicesPage extends React.Component {
                             data-title="Demond"
                             data-location="top"
                           >
-                            <img src="img/clients/rko.png" />
+                            <img src={getImageURL('clients/rko.png')} />
                           </a>
                         </figure>
                       </td>
@@ -400,7 +400,7 @@ class ServicesPage extends React.Component {
                             data-title="Dribbble"
                             data-location="top"
                           >
-                            <img src="img/clients/Sport.png" />
+                            <img src={getImageURL('clients/Sport.png')} />
                           </a>
                         </figure>
                       </td>
@@ -414,21 +414,21 @@ class ServicesPage extends React.Component {
                             data-title="JQuery"
                             data-location="top"
                           >
-                            <img src="img/clients/swann.png" />
+                            <img src={getImageURL('clients/swann.png')} />
                           </a>
                         </figure>
                       </td>
                       <td>
                         <figure>
                           <a href="https://vimeo.com/awards" target="_blank">
-                            <img src="img/clients/audiopro.png" />
+                            <img src={getImageURL('clients/audiopro.png')} />
                           </a>
                         </figure>
                       </td>
                       <td>
                         <figure>
                           <a href="https://vimeo.com/awards" target="_blank">
-                            <img src="img/clients/rko.png" />
+                            <img src={getImageURL('clients/rko.png')} />
                           </a>
                         </figure>
                       </td>
@@ -468,7 +468,7 @@ class ServicesPage extends React.Component {
               <div className="col-md-6 col-sm-12">
                 <img
                   className="img-responsive mt-50"
-                  src="img/custom/world.png"
+                  src={getImageURL('custom/world.png')}
                   alt="Express"
                 />
               </div>
@@ -496,7 +496,7 @@ class ServicesPage extends React.Component {
                             <div className="testimonial-author-thumbnail">
                               <img
                                 className="img-responsive img-circle"
-                                src="img/avatars/a5.jpg"
+                                src={getImageURL('avatars/a5.jpg')}
                                 alt="JOHN SMITH"
                               />
                             </div>
@@ -528,7 +528,7 @@ class ServicesPage extends React.Component {
                             <div className="testimonial-author-thumbnail">
                               <img
                                 className="img-responsive img-circle"
-                                src="img/avatars/a6.jpeg"
+                                src={getImageURL('avatars/a6.jpeg')}
                                 alt="JOHN SMITH"
                               />
                             </div>
@@ -562,7 +562,7 @@ class ServicesPage extends React.Component {
                             <div className="testimonial-author-thumbnail">
                               <img
                                 className="img-responsive img-circle"
-                                src="img/team/team5.jpg"
+                                src={getImageURL('team/team5.jpg')}
                                 alt="JOHN SMITH"
                               />
                             </div>
@@ -595,7 +595,7 @@ class ServicesPage extends React.Component {
                             <div className="testimonial-author-thumbnail">
                               <img
                                 className="img-responsive img-circle"
-                                src="img/avatars/a5.jpg"
+                                src={getImageURL('avatars/a5.jpg')}
                                 alt="JOHN SMITH"
                               />
                             </div>
@@ -683,7 +683,7 @@ class ServicesPage extends React.Component {
                   <div className="cta-inner p-0 pr-45">
                     <div className="cta-content">
                       <img
-                        src="img/custom/sales.png"
+                        src={getImageURL('custom/sales.png')}
                         alt="sales and specials"
                       />
 
