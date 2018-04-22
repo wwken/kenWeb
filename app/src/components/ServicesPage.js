@@ -50,32 +50,45 @@ class ServicesPage extends React.Component {
             <div class="row">
               <div class="col-sm-3">
                 <ServiceFeatureShortBio
-                  getImageURL={'new/n5.jpg'}
-                  title={'hello'}
-                  description={'hello1'}
+                  profileThumbnailURL={'services/web-1.png'}
+                  title={'Website Service'}
+                  description={
+                    'Let our experts create ' +
+                    'a business website for you.  Talk to a designer over the phone and tell us your ideas or vision, ' +
+                    "then we'll help you choose the best design for your business. Send us your text, logos and images — if you have them. If not, we have a huge library of professional photos to make your site amazing." +
+                    'Then we will get to work bringing your vision to life. We collect your content and images so we can build your site as quickly as possible. Then we send it back to you for review, and once you approve, we will help you to go live. Easy.'
+                  }
                 />
               </div>
 
               <div class="col-sm-3">
                 <ServiceFeatureShortBio
-                  getImageURL={'new/n2.jpg'}
-                  title={'hello'}
-                  description={'hello1'}
+                  profileThumbnailURL={'services/ecommerce.png'}
+                  title={'E-commerce'}
+                  description={
+                    'To ensure the success of your E-Commerce we offer special services and solutions that will help optimize your online shop and attract increasingly well-informed and digitally networked consumers.'
+                  }
                 />
               </div>
               <div class="col-sm-3">
                 <ServiceFeatureShortBio
-                  getImageURL={'new/n3.jpg'}
-                  title={'hello'}
-                  description={'hello1'}
+                  profileThumbnailURL={'services/big-data.png'}
+                  title={'Big Data'}
+                  description={
+                    'With ever growing data channels & device proliferation, data generation is increasing exponentially in volume, variety and complexity. At Zansys technologies, we understand the importance of tackling these Big Data challenges in order to manage data from these disparate sources by implementing technologies that help aggregate, integrate and validate data to provide meaningful insights and real time business value.\n' +
+                    '\n' +
+                    'Our expertise in Big Data technology implementation allows companies to focus on revenue maximization as well as improving operational efficiencies.'
+                  }
                 />
               </div>
 
               <div class="col-sm-3">
                 <ServiceFeatureShortBio
-                  getImageURL={'new/n4.jpg'}
-                  title={'hello'}
-                  description={'hello1'}
+                  profileThumbnailURL={'services/IT-consulting-services.png'}
+                  title={'IT Consulting Services'}
+                  description={
+                    'We deliver custom-tailored IT consultancy services and business IT support for organizations of small to medium size'
+                  }
                 />
               </div>
             </div>

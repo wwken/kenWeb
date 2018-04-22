@@ -103,19 +103,23 @@ export const ServiceFeatureShortBio = ({
   profileThumbnailURL,
   title,
   description,
-  summary,
+  readMoreClickFunc,
 }) => {
   return (
-    <div class="v-animation noframe" data-animation="fade-in" data-delay="200">
-      <figure class="clearfix borderframe">
+    <div
+      className="v-animation noframe"
+      data-animation="fade-in"
+      data-delay="200"
+    >
+      <figure className="clearfix borderframe">
         <img
           src={getImageURL(profileThumbnailURL)}
-          class="attachment-full responsive"
+          className="attachment-full responsive"
         />
-        <figcaption class="image-caption">
-          <h3 class="fw-4 fs-18 mt-20">{title}</h3>
+        <figcaption className="image-caption">
+          <h3 className="fw-4 fs-18 mt-20">{title}</h3>
           <p>{description}</p>
-          <a href="#" class="read-more">
+          <a href="#" class="read-more" onClick={readMoreClickFunc}>
             Read More →
           </a>
         </figcaption>
@@ -126,9 +130,9 @@ export const ServiceFeatureShortBio = ({
 
 ServiceFeatureShortBio.propTypes = {
   profileThumbnailURL: PropTypes.string,
-  fullName: PropTypes.string,
-  position: PropTypes.string,
-  summary: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  readMoreClickFunc: PropTypes.func,
 };
 
 export function translateURL(url) {
