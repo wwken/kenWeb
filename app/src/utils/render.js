@@ -104,6 +104,7 @@ export const ServiceFeatureShortBio = ({
   title,
   description,
   readMoreClickFunc,
+  clickKey,
 }) => {
   return (
     <div
@@ -119,7 +120,12 @@ export const ServiceFeatureShortBio = ({
         <figcaption className="image-caption">
           <h3 className="fw-4 fs-18 mt-20">{title}</h3>
           <p>{description}</p>
-          <a href="#" class="read-more" onClick={readMoreClickFunc}>
+          <a
+            href="javascript:void(0)"
+            data-key={clickKey}
+            className="read-more"
+            onClick={readMoreClickFunc}
+          >
             Read More →
           </a>
         </figcaption>
@@ -133,6 +139,42 @@ ServiceFeatureShortBio.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   readMoreClickFunc: PropTypes.func,
+  clickKey: PropTypes.string,
+};
+
+export const ServiceFeatureBio = ({
+  profileThumbnailURL,
+  title,
+  description,
+  readMoreClickFunc,
+  clickKey,
+}) => {
+  return (
+    <div
+      className="v-animation noframe"
+      data-animation="fade-in"
+      data-delay="200"
+    >
+      <figure className="clearfix borderframe">
+        <img
+          src={getImageURL(profileThumbnailURL)}
+          className="attachment-full responsive"
+        />
+        <figcaption className="image-caption">
+          <h3 className="fw-4 fs-18 mt-20">{title}</h3>
+          <p>{description}</p>
+          <a
+            href="javascript:void(0)"
+            data-key={clickKey}
+            className="read-more"
+            onClick={readMoreClickFunc}
+          >
+            Go Back →
+          </a>
+        </figcaption>
+      </figure>
+    </div>
+  );
 };
 
 export function translateURL(url) {

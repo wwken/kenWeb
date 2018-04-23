@@ -1,12 +1,20 @@
 import React from 'react';
 import { Page, addJSscript } from './../utils/render';
 import './main.css';
-
-import { getImageURL, ServiceFeatureShortBio } from '../utils/render';
+import { bindAll } from 'lodash';
+import {
+  getImageURL,
+  ServiceFeatureShortBio,
+  ServiceFeatureBio,
+} from '../utils/render';
 
 class ServicesPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      displayMode: 'all',
+    };
+    bindAll(this, ['renderServiceFeature', 'serviceFeatureMoreInfoClick']);
   }
 
   componentDidMount() {
@@ -15,8 +23,83 @@ class ServicesPage extends React.Component {
     // addJSscript('dzsparallaxer/advancedscroller/plugin.js')
   }
 
+  serviceFeatureMoreInfoClick(e) {
+    e.preventDefault();
+    const key = e.currentTarget.dataset.key;
+    this.setState({
+      displayMode: key + '',
+    });
+  }
+
+  renderServiceFeature(nth) {
+    let profileThumbnailURL,
+      title,
+      clickKey,
+      description = '';
+    if (nth === 1) {
+      profileThumbnailURL = 'services/web-1.png';
+      title = 'Website Service';
+      description =
+        'Let our experts create ' +
+        'a business website for you.  Talk to a designer over the phone and tell us your ideas or vision, ' +
+        "then we'll help you choose the best design for your business. Send us your text, logos and images — if you have them. If not, we have a huge library of professional photos to make your site amazing." +
+        'Then we will get to work bringing your vision to life. We collect your content and images so we can build your site as quickly as possible. Then we send it back to you for review, and once you approve, we will help you to go live. Easy.';
+    } else if (nth === 2) {
+      profileThumbnailURL = 'services/ecommerce.png';
+      title = 'E-commerce';
+      description =
+        'To ensure the success of your E-Commerce we offer special services and solutions that will help optimize your online shop and attract increasingly well-informed and digitally networked consumers.';
+    } else if (nth === 3) {
+      profileThumbnailURL = 'services/big-data.png';
+      title = 'Big Data';
+      description =
+        'With ever growing data channels & device proliferation, data generation is increasing exponentially in volume, variety and complexity. At Zansys technologies, we understand the importance of tackling these Big Data challenges in order to manage data from these disparate sources by implementing technologies that help aggregate, integrate and validate data to provide meaningful insights and real time business value.\n' +
+        '\n' +
+        'Our expertise in Big Data technology implementation allows companies to focus on revenue maximization as well as improving operational efficiencies.';
+    } else if (nth === 4) {
+      profileThumbnailURL = 'services/IT-consulting-services.png';
+      title = 'IT Consulting Services';
+      description =
+        'We deliver custom-tailored IT consultancy services and business IT support for organizations of small to medium size';
+    }
+    const props = {
+      profileThumbnailURL,
+      title,
+      description,
+      readMoreClickFunc: this.serviceFeatureMoreInfoClick,
+      clickKey: nth + '',
+    };
+    if (this.state.displayMode === 'all') {
+      return <ServiceFeatureShortBio {...props} />;
+    } else {
+      return <ServiceFeatureBio {...props} />;
+    }
+  }
+
+  getServiceSection() {
+    if (this.state.displayMode === 'all') {
+      return (
+        <div className="row">
+          <div className="col-sm-3">{this.renderServiceFeature(1)}</div>
+          <div className="col-sm-3">{this.renderServiceFeature(2)}</div>
+          <div className="col-sm-3">{this.renderServiceFeature(3)}</div>
+          <div className="col-sm-3">{this.renderServiceFeature(4)}</div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="row">
+          <div className="col-sm-12">
+            {this.renderServiceFeature(parseInt(this.state.displayMode))}
+          </div>
+        </div>
+      );
+    }
+  }
+
   render() {
     const pageClassName = '';
+    const serviceSection = this.getServiceSection();
     const content = (
       <div className="services-page-container">
         <section className="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll loaded dzsprx-readyall">
@@ -45,54 +128,8 @@ class ServicesPage extends React.Component {
           </div>
         </section>
 
-        <section class="section-primary main-color b-bordered">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-3">
-                <ServiceFeatureShortBio
-                  profileThumbnailURL={'services/web-1.png'}
-                  title={'Website Service'}
-                  description={
-                    'Let our experts create ' +
-                    'a business website for you.  Talk to a designer over the phone and tell us your ideas or vision, ' +
-                    "then we'll help you choose the best design for your business. Send us your text, logos and images — if you have them. If not, we have a huge library of professional photos to make your site amazing." +
-                    'Then we will get to work bringing your vision to life. We collect your content and images so we can build your site as quickly as possible. Then we send it back to you for review, and once you approve, we will help you to go live. Easy.'
-                  }
-                />
-              </div>
-
-              <div class="col-sm-3">
-                <ServiceFeatureShortBio
-                  profileThumbnailURL={'services/ecommerce.png'}
-                  title={'E-commerce'}
-                  description={
-                    'To ensure the success of your E-Commerce we offer special services and solutions that will help optimize your online shop and attract increasingly well-informed and digitally networked consumers.'
-                  }
-                />
-              </div>
-              <div class="col-sm-3">
-                <ServiceFeatureShortBio
-                  profileThumbnailURL={'services/big-data.png'}
-                  title={'Big Data'}
-                  description={
-                    'With ever growing data channels & device proliferation, data generation is increasing exponentially in volume, variety and complexity. At Zansys technologies, we understand the importance of tackling these Big Data challenges in order to manage data from these disparate sources by implementing technologies that help aggregate, integrate and validate data to provide meaningful insights and real time business value.\n' +
-                    '\n' +
-                    'Our expertise in Big Data technology implementation allows companies to focus on revenue maximization as well as improving operational efficiencies.'
-                  }
-                />
-              </div>
-
-              <div class="col-sm-3">
-                <ServiceFeatureShortBio
-                  profileThumbnailURL={'services/IT-consulting-services.png'}
-                  title={'IT Consulting Services'}
-                  description={
-                    'We deliver custom-tailored IT consultancy services and business IT support for organizations of small to medium size'
-                  }
-                />
-              </div>
-            </div>
-          </div>
+        <section className="section-primary main-color b-bordered">
+          <div className="container">{serviceSection}</div>
         </section>
 
         <section className="section-big main-color">
