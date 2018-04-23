@@ -119,7 +119,7 @@ export const ServiceFeatureShortBio = ({
         />
         <figcaption className="image-caption">
           <h3 className="fw-4 fs-18 mt-20">{title}</h3>
-          <p>{description}</p>
+          <p>{objUtils.short(description)}</p>
           <a
             href="javascript:void(0)"
             data-key={clickKey}
@@ -150,29 +150,28 @@ export const ServiceFeatureBio = ({
   clickKey,
 }) => {
   return (
-    <div
-      className="v-animation noframe"
-      data-animation="fade-in"
-      data-delay="200"
-    >
-      <figure className="clearfix borderframe">
-        <img
-          src={getImageURL(profileThumbnailURL)}
-          className="attachment-full responsive"
-        />
+    <div className="row">
+      <div className="col-sm-3">
+        <figure className="clearfix borderframe">
+          <img
+            src={getImageURL(profileThumbnailURL)}
+            className="attachment-full responsive"
+          />
+        </figure>
+      </div>
+      <div className="col-sm-9">
         <figcaption className="image-caption">
           <h3 className="fw-4 fs-18 mt-20">{title}</h3>
           <p>{description}</p>
           <a
             href="javascript:void(0)"
-            data-key={clickKey}
             className="read-more"
             onClick={readMoreClickFunc}
           >
             Go Back →
           </a>
         </figcaption>
-      </figure>
+      </div>
     </div>
   );
 };

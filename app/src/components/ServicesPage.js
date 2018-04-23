@@ -1,7 +1,7 @@
 import React from 'react';
 import { Page, addJSscript } from './../utils/render';
 import './main.css';
-import { bindAll } from 'lodash';
+import { bindAll, isNil } from 'lodash';
 import {
   getImageURL,
   ServiceFeatureShortBio,
@@ -26,8 +26,14 @@ class ServicesPage extends React.Component {
   serviceFeatureMoreInfoClick(e) {
     e.preventDefault();
     const key = e.currentTarget.dataset.key;
+    let displayMode = '';
+    if (isNil(key)) {
+      displayMode = 'all';
+    } else {
+      displayMode = key + '';
+    }
     this.setState({
-      displayMode: key + '',
+      displayMode,
     });
   }
 
@@ -48,7 +54,16 @@ class ServicesPage extends React.Component {
       profileThumbnailURL = 'services/ecommerce.png';
       title = 'E-commerce';
       description =
-        'To ensure the success of your E-Commerce we offer special services and solutions that will help optimize your online shop and attract increasingly well-informed and digitally networked consumers.';
+        'To ensure the success of your E-Commerce we offer special services and solutions that will help optimize your online shop and attract increasingly well-informed and digitally networked consumers.' +
+        'We provide a wide range of services to help companies with their e-commerce operations including:\n' +
+        '\n' +
+        'Product Catalog Management, ' +
+        'Google Product Listing Ads Management, ' +
+        'Website Promotion Management, ' +
+        'Email Marketing Management, ' +
+        'Consulting, ' +
+        'Amazon Seller Central Operations and ' +
+        'E-commerce Website Design & Development.';
     } else if (nth === 3) {
       profileThumbnailURL = 'services/big-data.png';
       title = 'Big Data';
@@ -60,7 +75,8 @@ class ServicesPage extends React.Component {
       profileThumbnailURL = 'services/IT-consulting-services.png';
       title = 'IT Consulting Services';
       description =
-        'We deliver custom-tailored IT consultancy services and business IT support for organizations of small to medium size';
+        'We delivers custom-tailored IT consultancy services and business IT support for organizations of small to medium size. By partnering with us, we can help lead your organization forward with highly-effective IT strategies. Implement innovative solutions with our IT consultancy services today. \n' +
+        'Like many of our customers, information technology is probably not your core business. Trying to solve all of your IT challenges internally can become a major distraction. These challenges can be costly and other aspects of your business could suffer. Leveraging knowledgeable IT consulting firms - such as WuahGe.com - helps your business remain secure and efficient without taking up valuable work time';
     }
     const props = {
       profileThumbnailURL,
@@ -139,8 +155,10 @@ class ServicesPage extends React.Component {
                 <h2 className="section-title mb-10">
                   <span>
                     {' '}
-                    Some <strong className="primary-color">Express</strong> Core
-                    Featuress{' '}
+                    Some <strong className="primary-color">
+                      WuahGe.com
+                    </strong>{' '}
+                    Core Featuress{' '}
                   </span>
                 </h2>
                 <p className="section-sub-title">

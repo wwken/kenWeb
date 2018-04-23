@@ -4,6 +4,8 @@ var isVariableNotDefined = function(v) {
   return v === undefined || v === null;
 };
 
+var MAX_SHORT_DISPLAY = 200;
+
 module.exports = {
   createParams: function(keys, values) {
     var v = {};
@@ -36,5 +38,9 @@ module.exports = {
       var z = config.resourceServerAddress + url;
       return z;
     }
+  },
+
+  short: function(str) {
+    return str.slice(0, MAX_SHORT_DISPLAY) + '...';
   },
 };
