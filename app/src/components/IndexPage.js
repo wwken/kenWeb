@@ -5,12 +5,16 @@ import { isNil, bindAll } from 'lodash';
 import { userActions } from '../actions';
 import { Page } from './../utils/render';
 import './main.css';
-
 import { getImageURL } from '../utils/render';
 
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  routeTo(e) {
+    e.preventDefault();
+    window.location = e.currentTarget.dataset.key;
   }
 
   render() {
@@ -189,6 +193,7 @@ class IndexPage extends React.Component {
                       <ul className="features">
                         <li>Everything in Basic Web package</li>
                         <li>Database integrations</li>
+                        <li>E-commerce site</li>
                         <li>Testing frameworks</li>
                       </ul>
                       <a
@@ -232,7 +237,13 @@ class IndexPage extends React.Component {
                   target="_self"
                 >
                   <i className="fa fa-diamond" />
-                  <span className="text">LEARN ABOUT EXPRESS</span>
+                  <span
+                    className="text"
+                    data-key="services.html"
+                    onClick={this.routeTo}
+                  >
+                    LEARN ABOUT OUR SERVICES
+                  </span>
                 </a>
                 <br />
                 * Plus a $69.99 monthly maintenance fee.

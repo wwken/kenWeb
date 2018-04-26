@@ -133,10 +133,10 @@ class ServicesPage extends React.Component {
                 <div className="clearfix pt-xl">
                   <a href="#" className="btn btn-primary mr-md">
                     <i className="fa fa-heart" />{' '}
-                    <strong className="text-white">Download Now</strong>
+                    <strong className="text-white">ORDER IT NOW</strong>
                   </a>
                   <a href="#" className="btn btn-default">
-                    <i className="fa fa-heart" /> Purchase<strong> Now</strong>
+                    <i className="fa fa-heart" /> Learn more
                   </a>
                 </div>
               </div>

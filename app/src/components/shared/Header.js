@@ -119,25 +119,17 @@ class Header extends React.Component {
                                   <li>
                                     <a
                                       className="dropdown-item"
-                                      href="pages-login.html"
+                                      href="login.html"
                                     >
-                                      Login Default
+                                      Login
                                     </a>
                                   </li>
                                   <li>
                                     <a
                                       className="dropdown-item"
-                                      href="pages-login-horizontal.html"
+                                      href="register.html"
                                     >
-                                      Login Horizontal
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      className="dropdown-item"
-                                      href="pages-login-3.html"
-                                    >
-                                      Login Extended
+                                      Register
                                     </a>
                                   </li>
                                 </ul>
