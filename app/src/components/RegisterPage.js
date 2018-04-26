@@ -51,8 +51,8 @@ class RegisterPage extends React.Component {
     const c = (
       <section className="section-big section-primary-login">
         <div className="container">
-          <div className="row">
-            <div className="col-md-8 offset-2">
+          <div className="row" style={{ float: 'right' }}>
+            <div className="">
               <div className="smart-wrap">
                 <div className="smart-forms smart-container wrap-3">
                   <div className="form-header header-primary">
